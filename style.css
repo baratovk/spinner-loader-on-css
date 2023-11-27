@@ -1,0 +1,138 @@
+/* Animated spinner loader at only clean CSS by barkar */
+/* Global variables for color, size, distance, rounding and animation of spinner balls */
+:root {
+  --red: #ff3b00;
+  --purple: #ae4dff;
+  --lightblue: #00beff;
+  --green: #00d47b;
+  --ballRadius: 50%;
+  --size: 25px;
+  --dist: 30px;
+  --minusDist: -30px;
+  --animSpeed: 3s;
+  --animType: ease-in-out;
+  --animDelay: 0s;
+  --animCicle: infinite;
+}
+
+/* Set the display type to flex for body to the set full height of the window and align the spinner centered vertically and horizontally */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 216px);
+  background-color: rgb(19, 20, 23);
+  padding: 100px;
+}
+
+/* Set the height and width of each spinner ball through global variables */
+.wrapper,
+.ball {
+  width: var(--size);
+  height: var(--size);
+}
+
+/* Set relative positioning to the spinner container */
+.wrapper {
+  position: relative;
+}
+
+/* Set each spinner ball to an absolute position relative to the container and set the rounding radius using a global variable */
+.ball {
+  position: absolute;
+  border-radius: var(--ballRadius);
+}
+
+/* We separately assign each spinner ball an animation name and, using variables, the color and speed, type, delay and cicle of the animation */
+.ball-1 {
+  background-color: var(--red);
+  animation: ball-1 var(--animSpeed) var(--animType) var(--animDelay)
+    var(--animCicle);
+}
+
+.ball-2 {
+  background-color: var(--purple);
+  animation: ball-2 var(--animSpeed) var(--animType) var(--animDelay)
+    var(--animCicle);
+}
+
+.ball-3 {
+  background-color: var(--lightblue);
+  animation: ball-3 var(--animSpeed) var(--animType) var(--animDelay)
+    var(--animCicle);
+}
+
+.ball-4 {
+  background-color: var(--green);
+  animation: ball-4 var(--animSpeed) var(--animType) var(--animDelay)
+    var(--animCicle);
+}
+
+/* Using keyframes and the transform property, we separately set the direction of movement for each spinner ball */
+/* The first ball rises up, then descends and moves to the right, then back to the left */
+@keyframes ball-1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, var(--minusDist));
+  }
+  50% {
+    transform: translate(var(--dist), 0);
+  }
+  75% {
+    transform: translate(var(--minusDist), 0);
+  }
+}
+
+/* The second ball moves to the right, then back to the left and goes down, then back up */
+@keyframes ball-2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--dist), 0);
+  }
+  50% {
+    transform: translate(0, var(--dist));
+  }
+  75% {
+    transform: translate(0, var(--minusDist));
+  }
+}
+
+/* The third ball goes down, then rises back up and moves to the left, then back to the right */
+@keyframes ball-3 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, var(--dist));
+  }
+  50% {
+    transform: translate(var(--minusDist), 0);
+  }
+  75% {
+    transform: translate(var(--dist), 0);
+  }
+}
+
+/* The fourth ball moves to the left, then back to the right and rises up, then back down */
+@keyframes ball-4 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--minusDist), 0);
+  }
+  50% {
+    transform: translate(0, var(--minusDist));
+  }
+  75% {
+    transform: translate(0, var(--dist));
+  }
+}
